@@ -25,6 +25,7 @@ class Tamagotchi
     @@stats[0] = @@stats.at(0).-(1)
     @@stats[2] = @@stats.at(2).to_f().-(0.5)
     @@stats[1] = @@stats.at(1).-(1)
+    @@stats[3] = @@stats.at(3).+(1)
 
   end
 
@@ -33,8 +34,8 @@ class Tamagotchi
   end
 
   define_method(:feed) do
-    @@stats[0] = @@stats.at(0).+(2)
-    @@stats[3] = @@stats.at(3).+(1)
+    @@stats[0] = @@stats.at(0).+(3)
+    Tamagotchi.time_passes()
   end
 
   define_singleton_method(:clear) do
@@ -43,6 +44,11 @@ class Tamagotchi
 
   define_method(:play) do
     @@stats[2] = @@stats.at(2).+(1)
+    Tamagotchi.time_passes()
+  end
+
+  define_method(:display) do
+    @@stats
   end
 
   define_method(:rest) do |time_units_of_sleep|

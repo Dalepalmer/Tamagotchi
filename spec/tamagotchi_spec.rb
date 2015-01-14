@@ -62,7 +62,7 @@ describe("Tamagotchi") do
     it("adds 1 to the current activity level") do
       my_pet = Tamagotchi.new("lil dragon")
       my_pet.play()
-      expect(my_pet.activity_level()).to(eq(11))
+      expect(my_pet.activity_level()).to(eq(10.5))
     end
   end
 
@@ -71,6 +71,18 @@ describe("Tamagotchi") do
       my_pet = Tamagotchi.new("lil dragon")
       my_pet.rest(4)
       expect(my_pet.sleep_level()).to(eq(14))
+    end
+  end
+  describe("#display") do
+    it('Displays the stats of the tama correct for each function') do
+      my_pet = Tamagotchi.new("lil dragon")
+      expect(my_pet.display()).to(eq([10, 10, 10, 0]))
+      my_pet.feed()
+      expect(my_pet.display()).to(eq([12, 9, 9.5, 1]))
+      my_pet.rest(1)
+      expect(my_pet.display()).to(eq([11, 10, 9, 2]))
+      my_pet.play()
+      expect(my_pet.display()).to(eq([10, 9, 9.5, 3]))
     end
   end
 end
