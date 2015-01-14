@@ -1,5 +1,5 @@
 class Tamagotchi
-  @@stats = [10, 10, 10]
+  @@stats = [10, 10, 10, 0]
 
   define_method(:initialize) do |name|
     @name = name
@@ -21,7 +21,42 @@ class Tamagotchi
     @activity_level = @@stats.at(2)
   end
 
-  define_method(:time_passes) do
+  define_singleton_method(:time_passes) do
     @@stats[0] = @@stats.at(0).-(1)
+    @@stats[2] = @@stats.at(2).to_f().-(0.5)
+    @@stats[1] = @@stats.at(1).-(1)
+
+  end
+
+  define_method(:dies) do
+    @@stats[0] = @@stats.at(0).-(10)
+  end
+
+  define_method(:feed) do
+    @@stats[0] = @@stats.at(0).+(2)
+    @@stats[3] = @@stats.at(3).+(1)
+  end
+
+  define_singleton_method(:clear) do
+    @@stats = [10, 10, 10, 0]
+  end
+
+  define_method(:play) do
+    @@stats[2] = @@stats.at(2).+(1)
+  end
+
+  define_method(:rest) do |time_units_of_sleep|
+    time_units_of_sleep.times() do
+      @@stats[1] = @@stats.at(1).+(2)
+      Tamagotchi.time_passes()
+    end
+  end
+
+  define_method(:is_alive?) do
+    if @@stats.at(0).>(0)
+      true
+    else
+      false
+    end
   end
 end
