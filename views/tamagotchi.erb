@@ -1,0 +1,94 @@
+<h1> <%= @tamagotchi.name() %> </h1>
+<% if @tamagotchi.health > 0 %>
+<img src="/img/Ufogif.gif">
+<% else %>
+<img src="/img/dead.gif">
+<% end %>
+<h2> Health points
+  <%
+  x = @tamagotchi.health()
+  x.times() do
+    %>
+    <i class="fa fa-heart"></i>
+    <%
+  end
+
+  empty = 10 - x
+  empty.times() do
+    %>
+    <i class="fa fa-heart-o"></i>
+    <% end %>
+
+      <form action="/heal/<%= @tamagotchi.id() %>" method="post">
+        <button class="btn btn-primary" type="submit"> Take your tamagotchi to the doctor? </button>
+      </form>
+  </h2>
+
+  <h2> Food level
+
+    <%
+    x = @tamagotchi.food()
+    x.times() do
+      %>
+      <i class="fa fa-bug"></i>
+      <% end %>
+
+    <form action="/snack/<%= @tamagotchi.id() %>" method="post">
+      <button class="btn btn-danger" type="submit"> Give your tamagotchi a snack? </button>
+        <span class="glyphicon glyphicon-cutlery"></span>
+    </form>
+
+    <form action="/meal/<%= @tamagotchi.id() %>" method="post">
+      <button class="btn btn-danger" type="submit"> Give your tamagotchi a large meal? </button>
+      <span class="glyphicon glyphicon-cutlery"></span>
+    </form>
+
+  </h2>
+
+    <h2> Activity level
+
+      <%
+      x = @tamagotchi.activity()
+      x.times() do
+        %>
+        <i class="fa fa-coffee"></i>
+
+        <% end %>
+
+        <form action="/tag/<%= @tamagotchi.id() %>" method="post">
+          <button class="btn btn-warning" type="submit"> Play tag with your tamagotchi? </button>
+        </form>
+        <form action="/play_fetch/<%= @tamagotchi.id() %>" method="post">
+          <button class="btn btn-warning" type="submit"> Play fetch with your tamagotchi? </button>
+        </form>
+
+      </h2>
+      <h2> Sleep level
+        <%
+        x = @tamagotchi.sleep()
+        x.times() do
+          %>
+          <i class="fa fa-bed"></i>
+
+          <% end %> </h2>
+
+<form action="/sleep/<%= @tamagotchi.id() %>" method="post">
+  <button class="btn btn-success" type="submit"> Tuck your tamagotchi in? </button>
+</form>
+
+<h2> Attack and defence levels
+  <%
+  x = @tamagotchi.attack()
+  x.times() do
+    %>
+    <i class="glyphicon glyphicon-fire"></i>
+
+    <% end %>
+    <%
+    x = @tamagotchi.defense()
+    x.times() do
+    %>
+    <i class="glyphicon glyphicon-star"></i>
+    <% end %> </h2>
+
+<a href="/"> Return to homepage </a>
