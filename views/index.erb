@@ -1,0 +1,22 @@
+<h1> Tamagotchi throwback </h1>
+
+
+
+<h2> Here is the list of bands to choose from : </h2>
+<% if @tamagotchies.any? %>
+<% @tamagotchies.each() do |tamagotchi| %>
+<ul>
+  <li><a href= "/tamagotchi/<%= tamagotchi.id() %>"><%= tamagotchi.name() %></a> <p><a href="/tamagotchi/<%= tamagotchi.id() %>/edit"> Edit <%= tamagotchi.name() %>'s name.'</a></li>
+  </ul>
+  <% end %>
+  <% else %>
+  No tamagotchies have been born yet.
+  <% end %>
+
+  <h2> Create your own tamagotchi! </h2>
+
+  <form action="/tamagotchi" method="post">
+    <label for="tamagotchi_name"> Tamagotchi's name? </label>
+    <input type="text" name="tamagotchi_name" id="tamagotchi_name" placeholder="Blue Blarg">
+    <button class="btn btn-success" type="submit"> Create your tamagotchi! </button>
+  </form>

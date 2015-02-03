@@ -1,5 +1,4 @@
-require('rspec')
-require('./lib/tamagotchi')
+require('spec_helper')
 
 
 describe("Tamagotchi") do
