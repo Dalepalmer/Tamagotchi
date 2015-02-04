@@ -63,3 +63,7 @@ post('/play_fetch/:id') do
   @tamagotchi.play_fetch
   redirect("/tamagotchi/".concat(tama_id.to_s()))
 end
+
+get('/map') do
+  erb(:map)
+end

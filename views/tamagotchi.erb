@@ -4,6 +4,7 @@
 <% else %>
 <img src="/img/dead.gif">
 <% end %>
+
 <h2> Health points
   <%
   x = @tamagotchi.health()
@@ -31,6 +32,16 @@
     x.times() do
       %>
       <i class="fa fa-bug"></i>
+      <% end %>
+      <% if @tamagotchi.food() > 10 %>
+      <br>
+      <br>
+      <%= "Your tomogatchi is prediabetic" %>
+      <% if @tamagotchi.food() > 100 %>
+      <br>
+      <br>
+      <%= "Your tomogatchi is dead from over eating" %>
+      <% end %>
       <% end %>
 
     <form action="/snack/<%= @tamagotchi.id() %>" method="post">
